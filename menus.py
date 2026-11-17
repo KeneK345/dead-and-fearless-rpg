@@ -342,7 +342,7 @@ def characterCreationMenu(currentUser):
                                             currentCharacter.armor = Item("Corpão Sarado","Ganhe no argumento como Platão",0,0)
                                         charAbilities = administratum.getCharAbilities((currentCharacter.id,))
                                         for ability in charAbilities:
-                                            # Pega a classe da abilidade com o nome. Direto do Stack Overflow >:D
+                                            # Pega a classe da habilidade com o nome. Direto do Stack Overflow >:D
                                             abilityClass = globals()[ability[4]]
                                             # Isso é do Copilot...
                                             currentCharacter.abilities.append(
