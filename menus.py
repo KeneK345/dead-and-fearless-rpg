@@ -202,7 +202,7 @@ def characterCreationMenu(currentUser):
                                 currentCharacter = DarkKnight(0,charName,0)
                                 currentCharacter.weapon = Item("Punhos","Falcon PAWNCH!",0,0)
                                 currentCharacter.armor = Item("Corpão Sarado","Ganhe no argumento como Platão",0,0)
-                                currentCharacter.abilities.append(Guard())
+                                currentCharacter.abilities.append(Guard(char=currentCharacter))
                                 print(f"Cruzado criado. Nem se importe em desejar sorte, o futuro desse aqui já está pré-determinado.")
                                 input("Aperte \"Enter\" para continuar")
                                 return currentCharacter
@@ -229,7 +229,7 @@ def characterCreationMenu(currentUser):
                                 currentCharacter = PurpleMage(0,charName,0)
                                 currentCharacter.weapon = Item("Punhos","Falcon PAWNCH!",0,0)
                                 currentCharacter.armor = Item("Corpão Sarado","Ganhe no argumento como Platão",0,0)
-                                currentCharacter.abilities.append(Guard())
+                                currentCharacter.abilities.append(Guard(char=currentCharacter))
                                 print(f"Cruzado criado. Nem se importe em desejar sorte, o futuro desse aqui já está pré-determinado.")
                                 input("Aperte \"Enter\" para continuar")
                                 return currentCharacter
@@ -256,7 +256,7 @@ def characterCreationMenu(currentUser):
                                 currentCharacter = ReddishPriest(0,charName,0)
                                 currentCharacter.weapon = Item("Punhos","Falcon PAWNCH!",0,0)
                                 currentCharacter.armor = Item("Corpão Sarado","Ganhe no argumento como Platão",0,0)
-                                currentCharacter.abilities.append(Guard())
+                                currentCharacter.abilities.append(Guard(char=currentCharacter))
                                 print(f"Cruzado criado. Nem se importe em desejar sorte, o futuro desse aqui já está pré-determinado.")
                                 input("Aperte \"Enter\" para continuar")
                                 return currentCharacter
@@ -343,8 +343,16 @@ def characterCreationMenu(currentUser):
                                         charAbilities = administratum.getCharAbilities((currentCharacter.id,))
                                         for ability in charAbilities:
                                             # Pega a classe da abilidade com o nome. Direto do Stack Overflow >:D
-                                            ability = globals()[ability[4]]
-                                            currentCharacter.abilities.append(ability)
+                                            abilityClass = globals()[ability[4]]
+                                            # Isso é do Copilot...
+                                            currentCharacter.abilities.append(
+                                                abilityClass(
+                                                    name=ability[2],
+                                                    desc=ability[3],
+                                                    char=currentCharacter,
+                                                    id=ability[0],
+                                                )
+                                            )
                                         os.system("cls" if os.name == "nt" else "clear")
                                         print(currentCharacter.abilities[0])
                                         return currentCharacter
@@ -400,7 +408,7 @@ def characterCreationMenu(currentUser):
                                         currentCharacter = DarkKnight(charId,charName,currentUser.id)
                                         currentCharacter.weapon = Item("Punhos","Falcon PAWNCH!",0,0)
                                         currentCharacter.armor = Item("Corpão Sarado","Ganhe no argumento como Platão",0,0)
-                                        dkAbilities = Guard()
+                                        dkAbilities = Guard(char=currentCharacter)
                                         idAbility = administratum.newAbility((charId,dkAbilities.name,dkAbilities.desc,dkAbilities.__class__.__name__))
                                         dkAbilities.setId(idAbility)
                                         dkAbilities.setCharId(charId)
@@ -431,7 +439,7 @@ def characterCreationMenu(currentUser):
                                         currentCharacter = PurpleMage(charId,charName,currentUser.id)
                                         currentCharacter.weapon = Item("Punhos","Falcon PAWNCH!",0,0)
                                         currentCharacter.armor = Item("Corpão Sarado","Ganhe no argumento como Platão",0,0)
-                                        pmAbilities = Guard()
+                                        pmAbilities = Guard(char=currentCharacter)
                                         idAbility = administratum.newAbility((charId,pmAbilities.name,pmAbilities.desc,pmAbilities.__class__.__name__))
                                         pmAbilities.setId(idAbility)
                                         pmAbilities.setCharId(charId)
@@ -462,7 +470,7 @@ def characterCreationMenu(currentUser):
                                         currentCharacter = ReddishPriest(charId,charName,currentUser.id)
                                         currentCharacter.weapon = Item("Punhos","Falcon PAWNCH!",0,0)
                                         currentCharacter.armor = Item("Corpão Sarado","Ganhe no argumento como Platão",0,0)
-                                        rpAbilities = Guard()
+                                        rpAbilities = Guard(char=currentCharacter)
                                         idAbility = administratum.newAbility((charId,rpAbilities.name,rpAbilities.desc,rpAbilities.__class__.__name__))
                                         rpAbilities.setId(idAbility)
                                         rpAbilities.setCharId(charId)
@@ -511,7 +519,7 @@ def characterCreationMenu(currentUser):
                                         currentCharacter = DarkKnight(0,charName,currentUser.id)
                                         currentCharacter.weapon = Item("Punhos","Falcon PAWNCH!",0,0)
                                         currentCharacter.armor = Item("Corpão Sarado","Ganhe no argumento como Platão",0,0)
-                                        currentCharacter.abilities.append(Guard())
+                                        currentCharacter.abilities.append(Guard(char=currentCharacter))
                                         print(f"Cruzado criado. Nem se importe em desejar sorte, o futuro desse aqui já está pré-determinado.")
                                         input("Aperte \"Enter\" para continuar")
                                         return currentCharacter
@@ -538,7 +546,7 @@ def characterCreationMenu(currentUser):
                                         currentCharacter = PurpleMage(0,charName,currentUser.id)
                                         currentCharacter.weapon = Item("Punhos","Falcon PAWNCH!",0,0)
                                         currentCharacter.armor = Item("Corpão Sarado","Ganhe no argumento como Platão",0,0)
-                                        currentCharacter.abilities.append(Guard())
+                                        currentCharacter.abilities.append(Guard(char=currentCharacter))
                                         print(f"Cruzado criado. Nem se importe em desejar sorte, o futuro desse aqui já está pré-determinado.")
                                         input("Aperte \"Enter\" para continuar")
                                         return currentCharacter
@@ -565,7 +573,7 @@ def characterCreationMenu(currentUser):
                                         currentCharacter = ReddishPriest(0,charName,currentUser.id)
                                         currentCharacter.weapon = Item("Punhos","Falcon PAWNCH!",0,0)
                                         currentCharacter.armor = Item("Corpão Sarado","Ganhe no argumento como Platão",0,0)
-                                        currentCharacter.abilities.append(Guard())
+                                        currentCharacter.abilities.append(Guard(char=currentCharacter))
                                         print(f"Cruzado criado. Nem se importe em desejar sorte, o futuro desse aqui já está pré-determinado.")
                                         input("Aperte \"Enter\" para continuar")
                                         return currentCharacter
@@ -586,7 +594,7 @@ def combatLoop(currentCharacter,enemies):
             for i in enemies:
                 print(i.basicInfo())
             print("\nVocê:\n",currentCharacter)
-            print(f"{"Ações":-^50}\n0 — Passar o turno\n1 — Atacar um inimigo\n2 — Meditar e restaurar mente\n3 — Mutilar-se por nenhum motivo")
+            print(f"{"Ações":-^50}\n0 — Passar o turno\n1 — Atacar um inimigo\n2 — Meditar e restaurar mente\n3 — Usar uma abilidade\n4 — Mutilar-se por nenhum motivo")
             try:
                 action = int(input("O que vai fazer: "))
                 print("\n")
@@ -629,6 +637,34 @@ def combatLoop(currentCharacter,enemies):
                     currentCharacter.restoreMind(math.floor(currentCharacter.maxMP/5))
                     break
                 case 3:
+                    back = False
+                    while True:
+                        abilCounter = 1
+                        for ability in currentCharacter.abilities:
+                            print(f"{abilCounter} — {ability}")
+                            abilCounter += 1
+                        print("Insira 0 para voltar")
+                        try:
+                            abilChoice = int(input("\nUsar abilidade: "))
+                        except ValueError:
+                            print("Digite um número!")
+                            time.sleep(2)
+                            continue
+                        if abilChoice == 0:
+                            back = True
+                            break
+                        try:
+                            currentCharacter.abilities[abilChoice-1].callAbility()
+                            break
+                        except IndexError:
+                            print("Digite um valor válido!")
+                            time.sleep(2)
+                            continue
+                    if back:
+                        continue
+                    else:
+                        break
+                case 4:
                     print(f"{currentCharacter._name} ataca a si mesmo... por algum motivo")
                     time.sleep(2)
                     currentCharacter.attackEnemy(currentCharacter,False)
@@ -637,6 +673,8 @@ def combatLoop(currentCharacter,enemies):
                     print("Digite um número válido!")
                     time.sleep(2)
                     continue
+        # Reseta modificadores no fim do turno do jogador
+        currentCharacter.resetMods()
         # Tira inimigos com vida 0
         enemies = [foes for foes in enemies if foes.health > 0]
         if len(enemies) == 0:

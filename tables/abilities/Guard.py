@@ -7,5 +7,5 @@ class Guard(Ability):
         super().__init__(name, desc, char, id, hpCost, mpCost)
 
     def callAbility(self):
-        self.char.increaseDefMod(math.ceil(self.char.defense/2))
+        print(self.char.increaseDefMod(math.ceil(self.char.defense/2)))
         return True

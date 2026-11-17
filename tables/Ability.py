@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 class Ability(ABC):
-    def __init__(self,name,desc,char=None,id=0,hpCost=0,mpCost=0):
+    def __init__(self,name,desc,char,id,hpCost,mpCost):
         self.id=id
         self.char=char
         self.name=name
