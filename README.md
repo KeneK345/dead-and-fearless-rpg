@@ -4,4 +4,10 @@ Versão Alpha 0.0.2, em desenvolvimento
   
 # Modo de usar  
 Rodar arquivo main.py no terminal. Necessário apenas o teclado.  
-Nenhuma biblioteca fora do python foi instalada
+Bibliotecas usadas:  
+sqlite3  
+os  
+time  
+random  
+math  
+abc
