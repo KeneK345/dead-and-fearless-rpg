@@ -39,7 +39,7 @@ dataTables = [
         id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
         charId INTEGER NOT NULL,
         name text NOT NULL,
-        desc text NOT NULL
+        desc text NOT NULL,
         FOREIGN KEY (charId) REFERENCES character (id) ON DELETE CASCADE
     );"""
 ]
