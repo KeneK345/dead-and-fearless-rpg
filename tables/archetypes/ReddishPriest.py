@@ -2,8 +2,8 @@
 import math,time,random
 from tables.Character import Character
 class ReddishPriest(Character):
-    def __init__(self,id,name,player,archetype="Sacerdote Rubro",maxHP=100,health=100,maxMP=100,mind=100,weapon=None,armor=None,baseATK=14,attack=14,modATK=0,baseDEF=1,defense=1,modDEF=0,gameStage=0):
-        super().__init__(id,name,player,archetype,maxHP,health,maxMP,mind,weapon,armor,baseATK,attack,modATK,baseDEF,defense,modDEF,gameStage)
+    def __init__(self,id,name,player,archetype="Sacerdote Rubro",maxHP=100,health=100,maxMP=100,mind=100,weapon=None,armor=None,baseATK=14,attack=14,modATK=0,baseDEF=1,defense=1,modDEF=0,abilities=[],gameStage=0):
+        super().__init__(id,name,player,archetype,maxHP,health,maxMP,mind,weapon,armor,baseATK,attack,modATK,baseDEF,defense,modDEF,abilities,gameStage)
 
     def takeDMG(self, damage):
         processedDefense = self.defense + self.modDEF

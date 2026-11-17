@@ -2,8 +2,8 @@
 import math, random, time
 from tables.Character import Character
 class PurpleMage(Character):
-    def __init__(self,id,name,player,archetype="Mago Púrpura",maxHP=100,health=100,maxMP=125,mind=125,weapon=None,armor=None,baseATK=9,attack=9,modATK=0,baseDEF=0,defense=0,modDEF=0,gameStage=0):
-        super().__init__(id,name,player,archetype,maxHP,health,maxMP,mind,weapon,armor,baseATK,attack,modATK,baseDEF,defense,modDEF,gameStage)
+    def __init__(self,id,name,player,archetype="Mago Púrpura",maxHP=100,health=100,maxMP=125,mind=125,weapon=None,armor=None,baseATK=9,attack=9,modATK=0,baseDEF=0,defense=0,modDEF=0,abilities=[],gameStage=0):
+        super().__init__(id,name,player,archetype,maxHP,health,maxMP,mind,weapon,armor,baseATK,attack,modATK,baseDEF,defense,modDEF,abilities,gameStage)
 
     def restoreMind(self, sane, doPrint=True):
         # O Mago Púrpura restaura 50% a mais de sanidade de qualquer fonte, arredondando para baixo

@@ -40,6 +40,7 @@ dataTables = [
         charId INTEGER NOT NULL,
         name text NOT NULL,
         desc text NOT NULL,
+        trueName text NOT NULL,
         FOREIGN KEY (charId) REFERENCES character (id) ON DELETE CASCADE
     );"""
 ]
@@ -126,7 +127,7 @@ def deleteItem(sacredLink, item):
 def newAbility(abil):
     # Eu poderia ter usado isso...
     global sacredLink, cursor
-    cursor.execute('INSERT INTO ability (charId,name,desc) VALUES (?,?,?)',abil)
+    cursor.execute('INSERT INTO ability (charId,name,desc,trueName) VALUES (?,?,?,?)',abil)
     sacredLink.commit()
     return cursor.lastrowid
 def getCharAbilities(character):
@@ -135,7 +136,7 @@ def getCharAbilities(character):
     return cursor.fetchall()
 def updAbility(abil):
     global sacredLink,cursor
-    cursor.execute('UPDATE ability SET name=?,desc=? WHERE id=?',abil)
+    cursor.execute('UPDATE ability SET name=?,desc=?,trueName=? WHERE id=?',abil)
 def deleteAbility(abil):
     global sacredLink,cursor
     cursor.execute('DELETE FROM ability WHERE id=?',abil)

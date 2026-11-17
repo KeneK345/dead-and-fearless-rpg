@@ -2,8 +2,8 @@
 import math,time
 from tables.Character import Character
 class DarkKnight(Character):
-    def __init__(self,id,name,player,archetype="Cavaleiro Negro",maxHP=115,health=115,maxMP=100,mind=100,weapon=None,armor=None,baseATK=12,attack=12,modATK=0,baseDEF=1,defense=1,modDEF=0,gameStage=0):
-        super().__init__(id,name,player,archetype,maxHP,health,maxMP,mind,weapon,armor,baseATK,attack,modATK,baseDEF,defense,modDEF,gameStage)
+    def __init__(self,id,name,player,archetype="Cavaleiro Negro",maxHP=115,health=115,maxMP=100,mind=100,weapon=None,armor=None,baseATK=12,attack=12,modATK=0,baseDEF=1,defense=1,modDEF=0,abilities=[],gameStage=0):
+        super().__init__(id,name,player,archetype,maxHP,health,maxMP,mind,weapon,armor,baseATK,attack,modATK,baseDEF,defense,modDEF,abilities,gameStage)
 
     def takeDMG(self, damage):
         # A armadura do Cavaleiro Negro é mais eficiente do que a dos outros
@@ -41,8 +41,6 @@ class DarkKnight(Character):
             # Se por algum motivo existir cura sobressalente, ela retorna como ataque bônus
             if overheal > 0:
                 self.increaseAtkMod(overheal)
-                # ainda não sei se falo pro jogador sobre os modificadores :P
-                # rage += f"\nAtaque aumenta em {overheal} para {self.modATK+self.attack} até o combate acabar"
         print(f"{self._name} levou {(damage - math.floor(processedDefense/4))} de dano")
         time.sleep(2)
         if len(rage) > 0:
