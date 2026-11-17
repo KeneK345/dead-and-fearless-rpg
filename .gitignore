@@ -224,3 +224,6 @@ __marimo__/
 
 # Database
 deadNfearless.bd
+
+# Cache
+__pycache__
